@@ -88,7 +88,7 @@ namespace QLDSV
 
         private void frmDiem_Load(object sender, EventArgs e)
         {
-         //aaaa
+         //aaaaddd
        
             dS.EnforceConstraints = false;
          

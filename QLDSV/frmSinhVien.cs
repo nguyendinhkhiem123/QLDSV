@@ -220,17 +220,9 @@ namespace QLDSV
             {
                 try
                 {
-                    if (trangThaiLop == 0)
-                    {
-
-                        sC = new SubClass(0, "", "", "", " ", false, new DateTime(), "", "", "", false, textMaLop.Text, textTen.Text, textMaKH.Text);
-                        undo.Push(sC);
-                    }
-                    else if (trangThaiLop == 1)
-                    {
-
-                        undo.Push(sC);
-                    }
+                    String maLop = textMaLop.Text.Trim();
+                    String tenLop = textTen.Text.Trim();
+                    String maKha = textMaKH.Text.Trim();
 
                     bdsLop.EndEdit();
                     bdsLop.ResetCurrentItem();
@@ -239,6 +231,19 @@ namespace QLDSV
                     MessageBox.Show("GHI THÀNH CÔNG", "THÔNG BÁO", MessageBoxButtons.OK);
                     this.SINHVIENTableAdapter.Connection.ConnectionString = Program.connstr;
                     this.SINHVIENTableAdapter.Fill(dS.SINHVIEN);
+
+                    if (trangThaiLop == 0)
+                    {
+
+                        sC = new SubClass(0, "", "", "", " ", false, new DateTime(), "", "", "", false, maLop,tenLop, maKH);
+                        undo.Push(sC);
+                    }
+                    else if (trangThaiLop == 1)
+                    {
+
+                        undo.Push(sC);
+                    }
+
                     btnThem.Enabled = btnSua.Enabled = btnReload.Enabled = btnBaoCao.Enabled = btnXoa.Enabled = groupControl1.Enabled = gcLop.Enabled = true;
                     btnGhi.Enabled = btnHuy.Enabled = btnUndo.Enabled = false;
                     groupControl3.Enabled = false;
@@ -412,32 +417,32 @@ namespace QLDSV
             {
                 try
                 {
-
-                    
-                    if (trangThaiSinhVien == 0)
-                    {
-                        String maSV1 = (((DataRowView)bdsSinhVien[bdsSinhVien.Position])["MASV"].ToString());
-                        String ho1 = (((DataRowView)bdsSinhVien[bdsSinhVien.Position])["HO"].ToString());
-                        String ten1 = (((DataRowView)bdsSinhVien[bdsSinhVien.Position])["TEN"].ToString());
-                        String noiSinh1 = (((DataRowView)bdsSinhVien[bdsSinhVien.Position])["NOISINH"].ToString());
-                        String diaChi1 = (((DataRowView)bdsSinhVien[bdsSinhVien.Position])["DIACHI"].ToString());
-                        bool phai1 = Boolean.Parse((((DataRowView)bdsSinhVien[bdsSinhVien.Position])["PHAI"].ToString()));
-                        bool nghiHoc1 = Boolean.Parse((((DataRowView)bdsSinhVien[bdsSinhVien.Position])["NGHIHOC"].ToString()));
-                        DateTime date1 = Convert.ToDateTime((((DataRowView)bdsSinhVien[bdsSinhVien.Position])["NGAYSINH"].ToString()));
-                        String maLop1 = (((DataRowView)bdsSinhVien[bdsSinhVien.Position])["MALOP"].ToString());
-                        String ghiChu1 = (((DataRowView)bdsSinhVien[bdsSinhVien.Position])["GHICHU"].ToString());
-                        sC = new SubClass(3, maSV1, ho1, ten1, maLop1, phai1, date1, noiSinh1, diaChi1, ghiChu1, nghiHoc1, "", "", "");
-                        undo.Push(sC);
-                    }
-                    else if(trangThaiSinhVien == 1)
-                    {
-                        undo.Push(sC);
-                    }
+                    String maSV1 = (((DataRowView)bdsSinhVien[bdsSinhVien.Position])["MASV"].ToString());
+                    String ho1 = (((DataRowView)bdsSinhVien[bdsSinhVien.Position])["HO"].ToString());
+                    String ten1 = (((DataRowView)bdsSinhVien[bdsSinhVien.Position])["TEN"].ToString());
+                    String noiSinh1 = (((DataRowView)bdsSinhVien[bdsSinhVien.Position])["NOISINH"].ToString());
+                    String diaChi1 = (((DataRowView)bdsSinhVien[bdsSinhVien.Position])["DIACHI"].ToString());
+                    bool phai1 = Boolean.Parse((((DataRowView)bdsSinhVien[bdsSinhVien.Position])["PHAI"].ToString()));
+                    bool nghiHoc1 = Boolean.Parse((((DataRowView)bdsSinhVien[bdsSinhVien.Position])["NGHIHOC"].ToString()));
+                    DateTime date1 = Convert.ToDateTime((((DataRowView)bdsSinhVien[bdsSinhVien.Position])["NGAYSINH"].ToString()));
+                    String maLop1 = (((DataRowView)bdsSinhVien[bdsSinhVien.Position])["MALOP"].ToString());
+                    String ghiChu1 = (((DataRowView)bdsSinhVien[bdsSinhVien.Position])["GHICHU"].ToString());
                     bdsSinhVien.EndEdit();
                     bdsSinhVien.ResetCurrentItem();
                     this.SINHVIENTableAdapter.Connection.ConnectionString = Program.connstr;
                     this.SINHVIENTableAdapter.Update(this.dS.SINHVIEN);
                     MessageBox.Show("GHI THÀNH CÔNG", "THÔNG BÁO", MessageBoxButtons.OK);
+
+                    if (trangThaiSinhVien == 0)
+                    {
+                       
+                        sC = new SubClass(3, maSV1, ho1, ten1, maLop1, phai1, date1, noiSinh1, diaChi1, ghiChu1, nghiHoc1, "", "", "");
+                        undo.Push(sC);
+                    }
+                    else if (trangThaiSinhVien == 1)
+                    {
+                        undo.Push(sC);
+                    }
                     toolGhi.Enabled = false;
                     toolHuy.Enabled = false;
                     toolThem.Enabled = true;

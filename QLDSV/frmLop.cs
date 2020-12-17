@@ -185,20 +185,10 @@ namespace QLDSV
             {
                 try
                 {
-                   
-                    if (trangthai == 0)
-                    {
-                        this.maLop = textMaLop.Text;
-                        this.tenLop = textTen.Text;
-                        this.maKhoa = textMaKH.Text;
-                        Lop lop = new Lop(0, maLop, tenLop, maKhoa);
-                        undo.Push(lop);
-                    }
-                    else if( trangthai == 1)
-                    {
-                        Lop lop = new Lop(1, maLop, tenLop, maKhoa);
-                        undo.Push(lop);
-                    }
+
+                    String malop = textMaLop.Text.Trim();
+                    String tenlop = textTen.Text.Trim();
+                    String makhoa = textMaKH.Text.Trim();
                     bdsLop.EndEdit();
                     bdsLop.ResetCurrentItem();
                     this.LOPTableAdapter.Connection.ConnectionString = Program.connstr;
@@ -206,6 +196,21 @@ namespace QLDSV
                     MessageBox.Show("GHI THÀNH CÔNG", "THÔNG BÁO", MessageBoxButtons.OK);
                     this.SINHVIENTableAdapter.Connection.ConnectionString = Program.connstr;
                     this.SINHVIENTableAdapter.Fill(dS.SINHVIEN);
+
+                    if (trangthai == 0)
+                    {
+                        this.maLop = malop;
+                        this.tenLop = tenlop;
+                        this.maKhoa = makhoa;
+                        Lop lop = new Lop(0, maLop, tenLop, maKhoa);
+                        undo.Push(lop);
+                    }
+                    else if (trangthai == 1)
+                    {
+                        Lop lop = new Lop(1, maLop, tenLop, maKhoa);
+                        undo.Push(lop);
+                    }
+
                     btnThem.Enabled = btnSua.Enabled = btnReload.Enabled = btnBaoCao.Enabled = btnXoa.Enabled = groupControl1.Enabled = groupControl2.Enabled = true;
                     btnGhi.Enabled = btnHuy.Enabled = btnUndo.Enabled = false;
                     groupControl3.Enabled = false;

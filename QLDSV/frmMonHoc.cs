@@ -60,6 +60,7 @@ namespace QLDSV
 
         private void btnGhi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+           
             if (txtMaMH.Text.Trim() == "")
             {
                 MessageBox.Show("Mã môn học không được bỏ trống !", "Thông báo !", MessageBoxButtons.OK);
@@ -75,32 +76,35 @@ namespace QLDSV
             {
                 try
                 {
-                   
+
+
+                    String maMon = txtMaMH.Text.Trim();
+                    String tenMon = txtTenMH.Text.Trim();
+                    bsdMonHoc.EndEdit();        // kết thúc quá trình hiệu chỉnh, gửi dl về dataset
+                    bsdMonHoc.ResetCurrentItem();       // lấy dl của textbox control bên dưới đẩy lên gridcontrol đòng bộ 2 khu vực(ko còn ở dạng tạm nữa mà chính thức ghi vào dataset)
+                    this.mONHOCTableAdapter.Update(this.dS.MONHOC);         // cập nhật dl từ dataset về database thông qua tableadapter
+                    this.mONHOCTableAdapter.Fill(this.dS.MONHOC);
+                    if (trangThai == 0)
+                    {
+                        mamh = maMon;
+                        tenmh = tenMon;
+                        MonHoc mh = new MonHoc(mamh, tenmh, 0);
+                        undo.Push(mh);
+                    }
+                    else if (trangThai == 1)
+                    {
+                        MonHoc mh = new MonHoc(mamh, tenmh, 1);
+                        undo.Push(mh);
+
+                    }
+                    MessageBox.Show("Ghi thành công", "Thông báo !", MessageBoxButtons.OK);
+
+                    btnPhucHoi.Enabled = true;
                     groupControl1.Enabled = true;
                     groupControl2.Enabled = false;
                     btnGhi.Enabled = false;
                     btnHuy.Enabled = false;
                     btnThem.Enabled = btnSua.Enabled = btnXoa.Enabled = btnReload.Enabled = btnThoat.Enabled = true;
-                  
-                    if (trangThai == 0)
-                    {
-                        mamh = txtMaMH.Text;
-                        tenmh = txtTenMH.Text;
-                        MonHoc mh = new MonHoc(mamh, tenmh, 0);
-                        undo.Push(mh);
-                    }
-                    else if(trangThai == 1)
-                    {
-                        MonHoc mh = new MonHoc(mamh,tenmh, 1);
-                        undo.Push(mh);
-
-                    }
-                    btnPhucHoi.Enabled = true;
-                    bsdMonHoc.EndEdit();        // kết thúc quá trình hiệu chỉnh, gửi dl về dataset
-                    bsdMonHoc.ResetCurrentItem();       // lấy dl của textbox control bên dưới đẩy lên gridcontrol đòng bộ 2 khu vực(ko còn ở dạng tạm nữa mà chính thức ghi vào dataset)
-                    this.mONHOCTableAdapter.Update(this.dS.MONHOC);         // cập nhật dl từ dataset về database thông qua tableadapter
-                    this.mONHOCTableAdapter.Fill(this.dS.MONHOC);
-                    MessageBox.Show("Ghi thành công", "Thông báo !", MessageBoxButtons.OK);
 
                 }
                 catch (Exception ex)
@@ -180,6 +184,8 @@ namespace QLDSV
 
         private void btnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+           
+
             if (bsdMonHoc.Count == 0)
             {   
                  MessageBox.Show("Môn học không có, không thể xóa !", "Thông báo !", MessageBoxButtons.OK);
@@ -187,6 +193,12 @@ namespace QLDSV
             }
             else
             {
+                string maMonHoc1 = (((DataRowView)bsdMonHoc[bsdMonHoc.Position])["MAMH"].ToString());
+                if (Program.KetNoi() == 0) return;
+                string sql1 = "EXEC SP_KIEMTRAMONHOCTRONGDIEM '" + maMonHoc1 + "'";
+                int n = Program.ExecSqlNonQuery(sql1);
+                if (n != 0) return;
+
                 if (bsdDiem.Count > 0)
                 {
                     MessageBox.Show("Môn học hiện đang có điểm sinh viên, không thể xóa !", "Thông báo !", MessageBoxButtons.OK);

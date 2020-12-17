@@ -99,7 +99,6 @@ namespace QLDSV.Report
             Program.myReader = Program.ExecSqlDataReader(sql);
             if (Program.myReader == null)
             {
-
                 return;
             }
 
