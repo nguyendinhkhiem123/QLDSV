@@ -65,12 +65,13 @@ namespace QLDSV
             {
                 MessageBox.Show("Mã môn học không được bỏ trống !", "Thông báo !", MessageBoxButtons.OK);
                 txtMaMH.Focus();
+                return;
             }
             else if (txtTenMH.Text.Trim() == "")
             {
                 MessageBox.Show("Tên môn học không được bỏ trống !", "Thông báo !", MessageBoxButtons.OK);
-               
                 txtTenMH.Focus();
+                return;
             }
             else
             {
@@ -214,8 +215,7 @@ namespace QLDSV
                         {
                             string maMonHoc = (((DataRowView)bsdMonHoc[bsdMonHoc.Position])["MAMH"].ToString());
                             string tenMonHoc = (((DataRowView)bsdMonHoc[bsdMonHoc.Position])["TENMH"].ToString());
-                            MonHoc mh = new MonHoc(maMonHoc,tenMonHoc,2);
-                            undo.Push(mh);
+                           
                             bsdMonHoc.RemoveCurrent();          //xóa row đang chọn ra khỏi dataset
                             //this.mONHOCTableAdapter.Connection.ConnectionString = Program.connstr;
                             this.mONHOCTableAdapter.Update(this.dS.MONHOC);
@@ -223,6 +223,8 @@ namespace QLDSV
                             this.mONHOCTableAdapter.Fill(this.dS.MONHOC);
                             MessageBox.Show("Xóa thành công!", "Thông báo !", MessageBoxButtons.OK);
                             btnPhucHoi.Enabled = true;
+                            MonHoc mh = new MonHoc(maMonHoc, tenMonHoc, 2);
+                            undo.Push(mh);
                         }
                         catch (Exception ex)
                         {

@@ -85,7 +85,7 @@ namespace QLDSV
             bdsLop.CancelEdit();
             LOPTableAdapter.Fill(dS.LOP);
             btnThem.Enabled = btnSua.Enabled = btnReload.Enabled = btnBaoCao.Enabled = btnXoa.Enabled = groupControl1.Enabled = true;
-            btnGhi.Enabled = btnHuy.Enabled = btnUndo.Enabled = false;
+            btnGhi.Enabled = btnHuy.Enabled= false;
             groupControl3.Enabled = false;
             groupControl1.Enabled = true;
             groupControl1.Enabled = true;
@@ -139,7 +139,7 @@ namespace QLDSV
             textMaKH.Text = this.maKH;
             textMaLop.Enabled = true;
             btnThem.Enabled = btnSua.Enabled = btnReload.Enabled = btnBaoCao.Enabled = btnXoa.Enabled = false;
-            btnGhi.Enabled = btnHuy.Enabled = btnUndo.Enabled = true;
+            btnGhi.Enabled = btnHuy.Enabled =true;
             groupControl3.Enabled = true;
             groupControl1.Enabled = groupControl2.Enabled = false;
         }
@@ -210,9 +210,9 @@ namespace QLDSV
                         Lop lop = new Lop(1, maLop, tenLop, maKhoa);
                         undo.Push(lop);
                     }
-
+                    btnUndo.Enabled = true;
                     btnThem.Enabled = btnSua.Enabled = btnReload.Enabled = btnBaoCao.Enabled = btnXoa.Enabled = groupControl1.Enabled = groupControl2.Enabled = true;
-                    btnGhi.Enabled = btnHuy.Enabled = btnUndo.Enabled = false;
+                    btnGhi.Enabled = btnHuy.Enabled = false;
                     groupControl3.Enabled = false;
                     btnUndo.Enabled = true;
 
@@ -247,7 +247,7 @@ namespace QLDSV
             textMaLop.Enabled = false;
             vitri = bdsLop.Position;
             btnSua.Enabled = btnThem.Enabled = btnReload.Enabled = btnBaoCao.Enabled = btnXoa.Enabled = false;
-            btnGhi.Enabled = btnHuy.Enabled = btnUndo.Enabled = true;
+            btnGhi.Enabled = btnHuy.Enabled = true;
             groupControl3.Enabled = true;
             groupControl2.Enabled = false;
             groupControl1.Enabled = false;
@@ -273,14 +273,14 @@ namespace QLDSV
                             this.maLop = (((DataRowView)bdsLop[bdsLop.Position])["MALOP"].ToString());
                             this.tenLop = (((DataRowView)bdsLop[bdsLop.Position])["TENLOP"].ToString());
                             this.maKhoa = (((DataRowView)bdsLop[bdsLop.Position])["MAKH"].ToString());
-                            Lop lop = new Lop(2, maLop, tenLop, maKhoa);
-                            undo.Push(lop);
-                            btnUndo.Enabled = true;
                             bdsLop.RemoveCurrent();
                             this.LOPTableAdapter.Connection.ConnectionString = Program.connstr;
                             this.LOPTableAdapter.Update(this.dS.LOP);
+                            Lop lop = new Lop(2, maLop, tenLop, maKhoa);
+                            undo.Push(lop);
+                            btnUndo.Enabled = true;
 
-                      }
+                }
                       catch (Exception ex)
                       {
                             MessageBox.Show("Lỗi xóa lớp" + ex.Message, "LỖI", MessageBoxButtons.OK);

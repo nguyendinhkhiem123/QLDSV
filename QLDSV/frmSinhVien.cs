@@ -179,7 +179,7 @@ namespace QLDSV
             bdsLop.CancelEdit();
             LOPTableAdapter.Fill(dS.LOP);
             btnThem.Enabled = btnSua.Enabled = btnReload.Enabled = btnBaoCao.Enabled = btnXoa.Enabled = gcLop.Enabled = true;
-            btnGhi.Enabled = btnHuy.Enabled = btnUndo.Enabled = false;
+            btnGhi.Enabled = btnHuy.Enabled= false;
             groupControl3.Enabled = false;
             groupControl1.Enabled = true;
             groupControl2.Enabled = true;
@@ -243,9 +243,9 @@ namespace QLDSV
 
                         undo.Push(sC);
                     }
-
+                    btnUndo.Enabled = true;
                     btnThem.Enabled = btnSua.Enabled = btnReload.Enabled = btnBaoCao.Enabled = btnXoa.Enabled = groupControl1.Enabled = gcLop.Enabled = true;
-                    btnGhi.Enabled = btnHuy.Enabled = btnUndo.Enabled = false;
+                    btnGhi.Enabled = btnHuy.Enabled= false;
                     groupControl3.Enabled = false;
                     groupControl2.Enabled = true;
                     gcSinhVien.Enabled = true;
@@ -296,12 +296,14 @@ namespace QLDSV
                     string ma = (((DataRowView)bdsLop[bdsLop.Position])["MALOP"].ToString());
                     string tenLop = (((DataRowView)bdsLop[bdsLop.Position])["TENLOP"].ToString());
                     string maKhoa = (((DataRowView)bdsLop[bdsLop.Position])["MAKH"].ToString());
-                    sC = new SubClass(2, "", "", "", " ", false, new DateTime(), "", "", "", false,ma,tenLop,maKhoa);
-                    undo.Push(sC);
-                    btnUndo.Enabled = true;
+                   
+                  
                     bdsLop.RemoveCurrent();
                     this.LOPTableAdapter.Connection.ConnectionString = Program.connstr;
                     this.LOPTableAdapter.Update(this.dS.LOP);
+                    sC = new SubClass(2, "", "", "", " ", false, new DateTime(), "", "", "", false, ma, tenLop, maKhoa);
+                    undo.Push(sC);
+                    btnUndo.Enabled = true;
 
                 }
                 catch (Exception ex)
@@ -327,7 +329,7 @@ namespace QLDSV
             toolXoa.Enabled = false;
             toolSua.Enabled = false;
             toolLammoi.Enabled = false;
-            
+          
 
             btnThem.Enabled = btnSua.Enabled = btnReload.Enabled = btnBaoCao.Enabled = btnXoa.Enabled = false;
             btnGhi.Enabled = btnHuy.Enabled = btnThoat.Enabled = false;
@@ -532,13 +534,14 @@ namespace QLDSV
                     DateTime date1 = Convert.ToDateTime((((DataRowView)bdsSinhVien[bdsSinhVien.Position])["NGAYSINH"].ToString()), System.Globalization.CultureInfo.InvariantCulture);
                     String maLop1 = (((DataRowView)bdsSinhVien[bdsSinhVien.Position])["MALOP"].ToString());
                     String ghiChu1 = (((DataRowView)bdsSinhVien[bdsSinhVien.Position])["GHICHU"].ToString());
-                    sC = new SubClass(5, maSV1, ho1, ten1, maLop1, phai1, date1, noiSinh1, diaChi1, ghiChu1, nghiHoc1, "", "", "");
-                    undo.Push(sC);
+                   
                     bdsSinhVien.RemoveCurrent();
                     this.SINHVIENTableAdapter.Connection.ConnectionString = Program.connstr;
                     this.SINHVIENTableAdapter.Update(this.dS.SINHVIEN);
                     this.SINHVIENTableAdapter.Fill(dS.SINHVIEN);
                     btnUndo.Enabled = true;
+                    sC = new SubClass(5, maSV1, ho1, ten1, maLop1, phai1, date1, noiSinh1, diaChi1, ghiChu1, nghiHoc1, "", "", "");
+                    undo.Push(sC);
 
                 }
                 catch (Exception ex)
