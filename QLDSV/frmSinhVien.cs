@@ -507,13 +507,11 @@ namespace QLDSV
                 MessageBox.Show("LỚP KHÔNG CÓ SINH VIÊN ĐỂ XÓA", "CẢNH BÁO", MessageBoxButtons.OK);
                 return;
             }
-
-            if (bdsHocPhi.Count > 0)
-            {
-                MessageBox.Show("KHÔNG THỂ XÓA SINH VIÊN NÀY VÌ ĐÃ ĐÓNG HỌC PHÍ", "CẢNH BÁO", MessageBoxButtons.OK);
-                return;
-            }
-            else if (bdsDiem.Count > 0)
+            if (Program.KetNoi() == 0) return;
+            string sql = "EXEC SP_KIEMTRAMASVTRONGHOCPHI_SINHVIEN '" + (((DataRowView)bdsSinhVien[bdsSinhVien.Position])["MASV"].ToString())+"'";
+            int n = Program.ExecSqlNonQuery(sql);
+            if (n != 0) return; 
+            if (bdsDiem.Count > 0)
             {
                 MessageBox.Show("KHÔNG THỂ XÓA SINH VIÊN NÀY VÌ ĐÃ CÓ ĐIỂM", "CẢNH BÁO", MessageBoxButtons.OK);
                 return;
