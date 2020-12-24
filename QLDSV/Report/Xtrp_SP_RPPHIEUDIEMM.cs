@@ -6,9 +6,9 @@ using DevExpress.XtraReports.UI;
 
 namespace QLDSV.Report
 {
-    public partial class Xtrp_SP_RPPHIEUDIEM1 : DevExpress.XtraReports.UI.XtraReport
+    public partial class Xtrp_SP_RPPHIEUDIEMM : DevExpress.XtraReports.UI.XtraReport
     {
-        public Xtrp_SP_RPPHIEUDIEM1(String masv)
+        public Xtrp_SP_RPPHIEUDIEMM(String masv)
         {
             InitializeComponent();
             this.sqlDataSource2.Connection.ConnectionString = Program.connstr;

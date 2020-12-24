@@ -184,6 +184,7 @@ namespace QLDSV
             groupControl1.Enabled = true;
             groupControl2.Enabled = true;
             gcSinhVien.Enabled = true;
+            contextMenuStrip1.Enabled = true;
         }
 
         private void btnGhi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

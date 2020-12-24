@@ -92,7 +92,7 @@ namespace QLDSV
             }
             if (Program.KetNoi() == 0) return;
 
-            String lenh = "EXEC SP_DONGHOCPHI '" + maSV + "','" + nienKhoa + "','" + hocKy + "','" + soTienDong + "'";
+            String lenh = "EXEC SP_DONGHOCPHI '" + maSV + "','" + nienKhoa + "','" + hocKy + "'," + soTienDong + "";
             int n = Program.ExecSqlNonQuery(lenh);
             if (n == 0)
             {

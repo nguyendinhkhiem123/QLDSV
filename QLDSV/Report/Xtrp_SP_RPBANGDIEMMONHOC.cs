@@ -11,11 +11,11 @@ namespace QLDSV.Report
         public Xtrp_SP_RPBANGDIEMMONHOC(String maLop, String maMon,int Lan)
         {
             InitializeComponent();
-            this.sqlDataSource1.Connection.ConnectionString = Program.connstr;
-            this.sqlDataSource1.Queries[0].Parameters[0].Value = Lan;
-            this.sqlDataSource1.Queries[0].Parameters[1].Value = maMon;
-            this.sqlDataSource1.Queries[0].Parameters[2].Value = maLop;
-            this.sqlDataSource1.Fill();
+            this.sqlDataSource2.Connection.ConnectionString = Program.connstr;
+            this.sqlDataSource2.Queries[0].Parameters[0].Value = Lan;
+            this.sqlDataSource2.Queries[0].Parameters[1].Value = maMon;
+            this.sqlDataSource2.Queries[0].Parameters[2].Value = maLop;
+            this.sqlDataSource2.Fill();
         }
 
     }

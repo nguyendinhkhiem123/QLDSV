@@ -50,10 +50,8 @@
             this.crossTabHeaderStyle = new DevExpress.XtraReports.UI.XRControlStyle();
             this.crossTabTotalStyle = new DevExpress.XtraReports.UI.XRControlStyle();
             this.ReportHeader = new DevExpress.XtraReports.UI.ReportHeaderBand();
-            this.Detail = new DevExpress.XtraReports.UI.DetailBand();
-            this.TopMargin = new DevExpress.XtraReports.UI.TopMarginBand();
-            this.BottomMargin = new DevExpress.XtraReports.UI.BottomMarginBand();
             this.label1 = new DevExpress.XtraReports.UI.XRLabel();
+            this.Detail = new DevExpress.XtraReports.UI.DetailBand();
             this.crossTab1 = new DevExpress.XtraReports.UI.XRCrossTab();
             this.xrCrossTabCell1 = new DevExpress.XtraReports.UI.CrossTab.XRCrossTabCell();
             this.xrCrossTabCell2 = new DevExpress.XtraReports.UI.CrossTab.XRCrossTabCell();
@@ -74,6 +72,8 @@
             this.xrCrossTabCell17 = new DevExpress.XtraReports.UI.CrossTab.XRCrossTabCell();
             this.xrCrossTabCell18 = new DevExpress.XtraReports.UI.CrossTab.XRCrossTabCell();
             this.xrCrossTabCell19 = new DevExpress.XtraReports.UI.CrossTab.XRCrossTabCell();
+            this.TopMargin = new DevExpress.XtraReports.UI.TopMarginBand();
+            this.BottomMargin = new DevExpress.XtraReports.UI.BottomMarginBand();
             this.TitleStyle = new DevExpress.XtraReports.UI.XRControlStyle();
             ((System.ComponentModel.ISupportInitialize)(this.crossTab1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
@@ -128,22 +128,6 @@
             this.ReportHeader.HeightF = 91.48524F;
             this.ReportHeader.Name = "ReportHeader";
             // 
-            // Detail
-            // 
-            this.Detail.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
-            this.crossTab1});
-            this.Detail.HeightF = 125F;
-            this.Detail.Name = "Detail";
-            // 
-            // TopMargin
-            // 
-            this.TopMargin.Name = "TopMargin";
-            // 
-            // BottomMargin
-            // 
-            this.BottomMargin.HeightF = 100.1814F;
-            this.BottomMargin.Name = "BottomMargin";
-            // 
             // label1
             // 
             this.label1.LocationFloat = new DevExpress.Utils.PointFloat(4.000007F, 4.000007F);
@@ -152,6 +136,13 @@
             this.label1.StyleName = "TitleStyle";
             this.label1.StylePriority.UseTextAlignment = false;
             this.label1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            // 
+            // Detail
+            // 
+            this.Detail.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.crossTab1});
+            this.Detail.HeightF = 125F;
+            this.Detail.Name = "Detail";
             // 
             // crossTab1
             // 
@@ -190,6 +181,7 @@
             crossTabColumnField1});
             this.crossTab1.DataAreaStyleName = "crossTabDataStyle";
             crossTabDataField1.FieldName = "DIEM";
+            crossTabDataField1.SummaryType = DevExpress.XtraReports.UI.CrossTab.SummaryType.Max;
             this.crossTab1.DataFields.AddRange(new DevExpress.XtraReports.UI.CrossTab.CrossTabDataField[] {
             crossTabDataField1});
             this.crossTab1.DataMember = "SP_RPBANGDIEMTONGKET";
@@ -349,6 +341,15 @@
             this.xrCrossTabCell19.ColumnIndex = 4;
             this.xrCrossTabCell19.Name = "xrCrossTabCell19";
             this.xrCrossTabCell19.RowIndex = 4;
+            // 
+            // TopMargin
+            // 
+            this.TopMargin.Name = "TopMargin";
+            // 
+            // BottomMargin
+            // 
+            this.BottomMargin.HeightF = 100.1814F;
+            this.BottomMargin.Name = "BottomMargin";
             // 
             // TitleStyle
             // 

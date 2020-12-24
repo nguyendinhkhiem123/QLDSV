@@ -209,6 +209,12 @@
     <Compile Include="Report\Xtrp_SP_RPPHIEUDIEM1.Designer.cs">
       <DependentUpon>Xtrp_SP_RPPHIEUDIEM1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Report\Xtrp_SP_RPPHIEUDIEMM.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\Xtrp_SP_RPPHIEUDIEMM.Designer.cs">
+      <DependentUpon>Xtrp_SP_RPPHIEUDIEMM.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="frmChuyenLop.resx">
       <DependentUpon>frmChuyenLop.cs</DependentUpon>
     </EmbeddedResource>
@@ -281,6 +287,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Report\Xtrp_SP_RPPHIEUDIEM1.resx">
       <DependentUpon>Xtrp_SP_RPPHIEUDIEM1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\Xtrp_SP_RPPHIEUDIEMM.resx">
+      <DependentUpon>Xtrp_SP_RPPHIEUDIEMM.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="DS.xsc">
       <DependentUpon>DS.xsd</DependentUpon>

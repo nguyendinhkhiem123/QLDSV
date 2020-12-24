@@ -209,7 +209,7 @@ namespace QLDSV
             }
             else textBox1.Text = "";
             if (Program.KetNoi() == 0) return;
-            String len = "EXEC SP_CHUYENLOP '" + textMalop.Text + "','" + this.malopsau + "','" + textHo.Text + "','" + textTen.Text + "','" + this.masv + "','" + textBox1.Text + "'";
+            String len = "EXEC SP_CHUYENLOP '" + textMalop.Text + "','" + this.malopsau + "',N'" + textHo.Text + "',N'" + textTen.Text + "','" + this.masv + "','" + textBox1.Text + "'";
             int k = Program.ExecSqlNonQuery(len);
             if (k == 0)
             {

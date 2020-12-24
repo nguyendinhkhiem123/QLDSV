@@ -87,8 +87,8 @@ namespace QLDSV
             btnThem.Enabled = btnSua.Enabled = btnReload.Enabled = btnBaoCao.Enabled = btnXoa.Enabled = groupControl1.Enabled = true;
             btnGhi.Enabled = btnHuy.Enabled= false;
             groupControl3.Enabled = false;
-            groupControl1.Enabled = true;
-            groupControl1.Enabled = true;
+            groupControl2.Enabled = true;
+          
 
 
         }

@@ -11,9 +11,9 @@ namespace QLDSV.Report
         public Xtrp_SP_RPDANHSACHSINHVIEN(String malop)
         {
             InitializeComponent();
-            this.sqlDataSource1.Connection.ConnectionString = Program.connstr;
-            this.sqlDataSource1.Queries[0].Parameters[0].Value = malop;
-            this.sqlDataSource1.Fill();
+            this.sqlDataSource3.Connection.ConnectionString = Program.connstr;
+            this.sqlDataSource3.Queries[0].Parameters[0].Value = malop;
+            this.sqlDataSource3.Fill();
         }
 
     }

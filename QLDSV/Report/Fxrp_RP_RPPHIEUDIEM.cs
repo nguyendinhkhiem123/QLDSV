@@ -133,7 +133,7 @@ namespace QLDSV.Report
             Program.myReader.Close();
             Program.conn.Close();
 
-            Xtrp_SP_RPPHIEUDIEM1 rpt = new Xtrp_SP_RPPHIEUDIEM1(maSV);
+            Xtrp_SP_RPPHIEUDIEMM rpt = new Xtrp_SP_RPPHIEUDIEMM(maSV);
             rpt.xrLabel1.Text = " BẢNG ĐIỂM SINH VIÊN " + hoTen;
             ReportPrintTool print = new ReportPrintTool(rpt);
             print.ShowPreviewDialog();
